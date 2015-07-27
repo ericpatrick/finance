@@ -1,0 +1,140 @@
+<div id="map-container" class="dashboard-map-container">
+  <div class="leaflet-control" style="top: 175px; left: 10px; position: absolute;">
+    <div class="data-type-button-section">
+      <div class="leaflet-draw leaflet-bar">
+        <a ng-show="map.baseLayerSelected == 'day'"
+           class="leaflet"
+           role="button"
+           title="Click to see a night map"
+           href="javascript:"
+           style="padding-top: 3px;"
+           ng-click="map.switchBaseLayer()">
+          <i class="fa fa-moon-o fa-lg"></i>
+        </a>
+        <a ng-show="map.baseLayerSelected == 'night'"
+           class="leaflet-disabled"
+           role="button"
+           title="Click to see a day map"
+           href="javascript:"
+           style="padding-top: 3px;"
+           ng-click="map.switchBaseLayer()">
+          <i class="fa fa-sun-o fa-lg"></i>
+        </a>
+      </div>
+    </div>
+  </div>  
+</div>
+
+<!-- Popup Template -->
+
+<div id="tweet-popup" ng-show="map.tweetResult">
+  <div class="marker-popup">
+    <div class="marker-content">
+      <img src="shared/images/active-tweet-marker.png" class="marker-view">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="map.hidePopup()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+      <div class="mc-tweet-user">
+        <div class="row">
+          <div class="col-md-7">
+            <p class="popup-label">CLIENTE</p>
+            <p class="popup-content-client">{{ map.tweetResult['people'] }}</p>
+          </div>
+          <div class="col-md-5" style="padding-left: 25px">
+            <p class="popup-label">VALOR</p>
+            <p class="popup-content-value">{{ map.tweetResult['value'] | currency: "R$" }}</p>
+          </div>
+        </div>
+        <div style="padding-top: 15px; padding-right: 5px;">
+          <div class="row">
+            <div class="col-md-7">
+              <p class="popup-label">TRANSAÇÃO</p>
+              <p class="popup-content">{{ map.tweetResult['flag'] | capitalize:'first' }} / {{ map.tweetResult['typepay'] | capitalize:'first' }}</p>
+            </div>
+            <div class="col-md-5" style="padding-left: 29px">
+              <p class="popup-label">STATUS</p>
+              <div ng-if="map.tweetResult['status'] == 'yes'">
+                <!-- code to render a large video block-->
+                <p class="popup-content-status-approved">Aprovada</p>
+              </div>
+              <div ng-if="map.tweetResult['status'] == 'no'">
+                <!-- code to render the regular video block -->
+                <p class="popup-content-status-blocked">Bloqueada</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mc-tweet-msg">
+        <div class="row">
+          <div class="col-md-7">
+            <p class="popup-label">{{ map.tweetResult['typeestab'] | uppercase }}</p>
+            <p class="popup-content">{{ map.tweetResult['nameestab'] | lowercase | capitalize:'all' }}</p>
+          </div>
+          <div class="col-md-5">
+            <p class="popup-label">EQUIPAMENTO</p>
+            <p class="popup-content">{{ map.tweetResult['payway'] | capitalize:'all' }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p class="popup-content">{{ map.tweetResult['cnpj'] }}</p>
+          </div>
+        </div>
+        <div style="padding-top: 15px; padding-right: 5px;">
+          <div class="row">
+            <div class="col-md-7">
+              <p class="popup-label">LOCALIZAÇÃO</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-7">
+              <p class="popup-content">{{ map.tweetResult['address'] }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-7">
+              <p class="popup-content">{{ map.tweetResult['city'] }}, {{ map.tweetResult['state'] }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="map-control">
+  <div class="row">
+    <ul class="list-inline item">
+      <li id="cluster" ng-click="map.changeMapType($event)" class="{{ map.mapSelected == 'cluster' ? 'active' : 'inactive' }}">
+       CLUSTER
+      </li>
+      <li id="point" ng-click="map.changeMapType($event)" class="{{ map.mapSelected == 'point' ? 'active' : 'inactive' }}">
+        POINT
+      </li>
+      <li id="intensity" ng-click="map.changeMapType($event)" class="{{ map.mapSelected == 'intensity' ? 'active' : 'inactive' }}">
+        INTENSITY
+      </li>
+      <!-- <li id="thematic" ng-click="map.changeMapType($event)" class="{{ map.mapSelected == 'thematic' ? 'active' : 'inactive' }}">
+        THEMATIC
+      </li> -->
+    </ul>
+
+    <ul class="list-inline draw-item" ng-show="false">
+      <li class="draw {{ map.drawing ? 'active' : 'inactive' }}" ng-click="map.drawArea()">
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="thematic-legend" ng-show="map.mapSelected === 'thematic'" style="display: block; float: right; left: 10px; bottom: 10px; position: absolute; color: white; z-index: 10;">
+  <ul class="list-inline">
+    <li class="{{ id }} {{ map.layerGroup.hasLayer(layer) ? 'disabled' : '' }}" ng-repeat="(id, layer) in map.thematicMaps" ng-click="map.toggleThematicMap(id, layer)">
+      <strong>
+        {{ id }}
+      </strong>
+    </li>
+  </ul>
+</div>

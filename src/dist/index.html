@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="gogeo">
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="gogeo,gogeo.io">
+
+    <title>goGeo - POC</title>
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+    <link href="gogeo.css" type="text/css" rel="stylesheet"/>
+    
+    <link rel="icon" type="image/png" href="shared/images/android-chrome-36x36.png" sizes="36x36">
+    <link rel="icon" type="image/png" href="shared/images/android-chrome-48x48.png" sizes="48x48">
+    <link rel="icon" type="image/png" href="shared/images/android-chrome-72x72.png" sizes="72x72">
+    <link rel="icon" type="image/png" href="shared/images/android-chrome-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="shared/images/android-chrome-144x144.png" sizes="144x144">
+    <link rel="icon" type="image/png" href="shared/images/android-chrome-192x192.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="57x57" href="shared/images/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="shared/images/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="shared/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="shared/images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="shared/images/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="shared/images/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="shared/images/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="shared/images/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="shared/images/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="shared/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="shared/images/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="shared/images/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="shared/images/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="shared/images/manifest.json">
+    <link rel="shortcut icon" href="shared/images/favicon.ico">
+</head>
+
+<body>
+    <div ng-view></div>
+
+    <script src="http://maps.google.com/maps/api/js?v=3.2&sensor=false"></script>
+    <script type="text/javascript" src="gogeo-core.js"></script>
+    <script type="text/javascript" src="gogeo.js"></script>
+
+    <script src="//cdn.maptiks.com/maptiks-leaflet.min.js"></script>
+    <script>
+        if (window.location.hostname.match("gogeo.io")) {
+            // maptiks.debug = true;
+            maptiks.trackcode = "a6da9937-5d9f-46b6-a7a6-719c8d1f6be2";
+        }
+    </script>
+
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '873202776080901',
+              xfbml      : true,
+              version    : 'v2.2'
+            });
+        };
+    </script>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+        _gaq.push(['_setAccount', 'UA-51416381-2', 'auto']);
+    </script>
+</body>
+</html>

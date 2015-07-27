@@ -1,0 +1,281 @@
+@fontName: "Titillium Web";
+
+@font-face {
+  font-family: @fontName, sans-serif;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: @fontName !important;
+}
+
+@division: 33%;
+@bgColor: #1cb4db;
+@borderColor: #1cb4db;
+
+a {
+  color: darken(@bgColor, 10%);
+}
+
+.numberpad {
+  font-family: @fontName;
+  font-size: 18pt;
+  color: @bgColor;
+}
+
+.numberpad-big {
+  font-size: 28pt;
+}
+
+.dashboard-panel {
+
+  background-color: @bgColor;
+
+  .dashboard-top-panel {
+    .navbar {
+      .navbar-brand {
+        margin-right: 16px;
+      }
+    }
+  }
+
+  .dashboard-center-panel {
+    background-color: #cccccc;
+    position: relative;
+    // display: block;
+    // height: 100%;
+    // width: 100%;
+
+    .dashboard-map-panel{
+      height: 100%;
+      position: relative;
+      float: left;
+      width: 100%;
+      overflow: hidden;
+      z-index: 1;
+      padding-right: 422px;
+    }
+
+    .dashboard-right-panel {
+      overflow-y: auto;
+      display: block;
+      position: absolute;
+      float: right;
+      background-color: #F2F2F2;
+      margin: 0px;
+      padding: 0px;
+      height: 100%;
+      // min-height:100%;
+      width: 422px;
+      right: 0px;
+      top: 0px;
+      z-index: 2;
+    }
+  }
+
+}
+
+.dashboard-header {
+  .navbar {
+    padding-top: 5px;
+  }
+
+  .navbar-dashboard {
+    background-color: transparent;
+    border: none;
+  }
+
+  .navbar-header .navbar-brand {
+    width: auto;
+    height: auto;
+    margin: 0px;
+    padding: 0px 10px 0 0;
+  }
+
+  .navbar-header .navbar-brand img {
+    margin: 0px 0px 0px 0px;
+  }
+}
+
+.dashboard-details {
+  position: relative;
+}
+
+.tab-container {
+  margin-top: 20px;
+}
+
+.dashboard-right-panel {
+  padding-top: 20px;
+
+  .nav {
+    margin-bottom: 8px;
+  }
+
+  .nav-tabs {
+    border-top: 1px solid #D8D8D8;
+    border-bottom: 1px solid #D8D8D8;
+  }
+
+  .nav-tabs li {
+    float: right;
+  }
+
+  .nav-tabs li.active a {
+    font-weight: 600;
+    font-size: 14px;
+    color: #1CB4DB;
+    line-height: 20px;
+    border-top: none;
+    margin-top: 0px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    margin-right: 0px;
+  }
+
+  .nav-tabs li.active a:hover {
+    padding-top: 10px;
+    padding-bottom: 16px;
+  }
+
+  .nav-tabs li a {
+    font-weight: 400;
+    font-size: 14px;
+    color: #D7D7D7;
+    line-height: 20px;
+    border-radius: 0px;
+  }
+
+  .nav-tabs li a:hover {
+    padding-top: 10px;
+    padding-bottom: 14px;
+    margin-top: 0px;
+    border-bottom: none;
+  }
+
+  .nav-tabs.search-filter {
+    background-color: #1cb4db;
+  }
+  .nav-tabs.search-filter .filter {
+    float: left;
+    width: 55.8069%;
+    /*margin: 0px;*/
+    margin-right: 0px;
+  }
+  .nav-tabs.search-filter .filter a {
+    width: 100%;
+    color: #fcfcfc;
+    font-weight: 600;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .nav-tabs.search-filter .filter a button {
+    margin-top: -2px;
+  }
+  .nav-tabs.search-filter .filter a:hover {
+    background-color: #106a81;
+    border-color: #106a81;
+  }
+
+  .hashtag-active {
+    border: none;
+    background-color: lighten(@bgColor, 10%);
+    margin-left: -16px;
+    margin-right: -16px;
+    padding: 10px 16px;
+    font-size: 18pt;
+    color: whitesmoke;
+    text-shadow: 1px 2px @bgColor;
+
+    .badge {
+      background-color: whitesmoke;
+      color: @bgColor;
+      text-shadow: none;
+    }
+  }
+
+  .table {
+    th {
+      color: #666;
+    }
+  }
+
+  .tweets-amounts-plus {
+    font-size: 28pt;
+    padding-top: 15px;
+
+    label {
+      font-weight: 600;
+      font-size: 12px;
+      color: #868686;
+      line-height: 20px;
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    span {
+      font-weight: 600;
+      font-size: 36px;
+      color: #1CB4DB;
+      line-height: 1.1em;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+.dashboard-map {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  .dashboard-map-container {
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+
+    .map(@zindex) {
+      position: absolute;
+      z-index: @zindex !important;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+
+    .leaflet-map-pane {
+      .map(3);
+    }
+  }
+}
+
+.search-input-container {
+  input {
+    height: 45px !important;
+  }
+}
+
+.hashtag-marker-button {
+  padding-top: 5px !important;
+}
+
+.btn-warning {
+  margin-top: -56px;
+  font-size: 14px;
+  color: #2F383A;
+  font-weight: 600;
+  line-height: 28px;
+  background: #ffe341;
+  border: solid 1px transparent;
+}
+
+.btn-warning:hover {
+  margin-top: -56px;
+  font-size: 14px;
+  color: #2F383A;
+  font-weight: 600;
+  line-height: 28px;
+  background: #ffe341;
+  border: solid 1px transparent;
+}
